@@ -1,10 +1,18 @@
-
 <div class="container">
-   
-   <h2 class="md-title">Here is a nice graph !</h2>
-            
-            <!--Directive fournie par angular-chart.js qui utilise des données fournient par le controleur-->
-            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.data" chart-labels="vm.labels">
-            </canvas> 
-            
-</div>
+
+	<h2 class="md-title">Here is a nice graph !</h2>
+
+	<div ng-controller="Page2Ctrl">
+
+		<form novalidate class="simple-form">
+			<input type="text" ng-model="user.username" placeholder="GitHub Username" /><br />
+			<input type="text" ng-model="user.reponame" placeholder="GitHub Reponame" /><br />
+			<input type="submit" ng-click="update(user)" value="Save" /> {{msg}} {{msg2}}
+			{{commits}} <br />
+			{{nbCommits}}
+		</form>
+
+		<!--Directive fournie par angular-chart.js qui utilise des données fournient par le controleur-->
+		<canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.data" chart-labels="vm.labels"></canvas>
+
+	</div>

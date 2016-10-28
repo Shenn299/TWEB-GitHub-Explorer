@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	'use strict';
 
 	/**
@@ -9,16 +9,38 @@
 	 * Service of the app
 	 */
 
-  	angular
+	angular
 		.module('page2')
-		.factory('Page2Service', Page2);
-		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
-		// function Name ($http, someSevide) {...}
+		.factory('Page2Service', Page2Service);
 
-		Page2.$inject = ['$http'];
+	Page2Service.$inject = ['$http'];
 
-		function Page2 ($http) {
+	function Page2Service($http) {
 
-		}
+		var service = {
+			Page2: function ($scope) {
+
+				return $http({
+					method: 'GET',
+					url: 'https://api.github.com/repos/' + $scope.username + '/' + $scope.reponame + '/commits',
+					qs: {
+						access_token: 'ba699b1c3198ca468a5d8f5b205c1b8059936080'
+					},
+					headers: {
+						'Accept': 'application/vnd.github.VERSION.sha'
+					},
+					params: {
+						per_page: 100
+					}
+					
+				});
+
+			}
+
+		};
+
+		return service;
+
+	}
 
 })();
